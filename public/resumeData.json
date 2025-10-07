@@ -1,9 +1,20 @@
 {
-    "main": {
-        "name" : "Muhammad Iksan",
-        "description": "I am a programmer",
-        "image":"profilepic.jpg",
-        "github":"https://github.com/mdiksann",
-        "project":"https://github.com/mdiksann"
-    }
+  "main": {
+    "name": "Muhammad Iksan",
+    "description": "I am a programmer",
+    "image": "profilepic.jpg",
+    "github": "https://github.com/mdiksann",
+    "project": "https://github.com/mdiksann",
+    "bio": "Hello! My name is Iksan, and I'm a programmer with a strong, dual-platform background spanning both web development and mobile applications. I don't just stick with what I know; what truly excites me is the pursuit of knowledge. I'm relentlessly focused on learning new technologies and constantly dedicated to improving my skills so I can stay sharp and bring the best, most current solutions to every project I take on.",
+    "contactmessage": "Hello, here I am",
+    "email": "iksannaja@gmail.com",
+    "phone": "+62 777 7777 7777",
+    "address": {
+      "street": "Jl. jalan ke kota",
+      "city": "Bangunjiwo",
+      "state": "Yogyakarta",
+      "zip": "61191"
+    },
+    "resumedownload": "https://github.com/mdiksann"
+  }
 }
