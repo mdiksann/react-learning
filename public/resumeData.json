@@ -16,5 +16,61 @@
       "zip": "61191"
     },
     "resumedownload": "https://github.com/mdiksann"
-  }
+  },
+      "resume" : {
+        "skillmessage":"Here are my main skills",
+        "education" : [
+            {
+                "school": "Universitas Indonesia",
+                "degree": "Bachelor of Computer Science",
+                "graduated": "June 2026",
+                "description" : "I am majoring in Software Engineering"
+            },
+            {
+                "school": "SMK Yadika Palu",
+                "degree": "Computer and Network Engineering",
+                "graduated": "May 2020",
+                "description": "I am joining computer olympiad and programming club"
+            }
+        ],
+        "work": [
+            {
+                "company" : "PT. Cinta Damai Sejahtera",
+                "title" : "Software Engineer",
+                "years": "April 2026 - February 2027",
+                "description": "Creating a website and maintenance"
+            }, {
+                "company": "My Own Startup",
+                "title": "Frontend Engineer",
+                "years": "February 2027 - present",
+                "description": "Creating a mobile application"
+            }
+        ],
+        "skills": [
+            {
+                "name" : "Java",
+                "level": "70%"
+            },
+            {
+                "name": "Python",
+                "level": "90%"
+            },
+            {
+                "name": "ReactJS",
+                "level": "85%"
+            },
+            {
+                "name": "VueJS",
+                "level": "88%"
+            },
+            {
+                "name": "Kotlin",
+                "level": "95%"
+            },
+            {
+                "name": "PHP",
+                "level": "70%"
+            }
+        ]
+    }
 }
