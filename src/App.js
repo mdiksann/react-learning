@@ -1,59 +1,85 @@
 import ReactGA from "react-ga";
 import './App.css';
-import { Component } from 'react';
-import $ from "jquery";
+import { useState, useEffect } from 'react';
 import Header from "./Components/Header";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Resume from "./Components/Resume";
-import Portfolio from "./Components/Portofio";
+import Portfolio from "./Components/Portfolio";
 import Footer from "./Components/Footer";
 
+function App() {
+  const [resumeData, setResumeData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: 'bar',
-      resumeData: {}
-    };
-
+  useEffect(() => {
     ReactGA.initialize('UA-110570651-1');
     ReactGA.pageview(window.location.pathname);
-  }
-
-   getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({
-          resumeData : data
-        });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
+    
+    const fetchResumeData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('./resumeData.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setResumeData(data);
+      } catch (err) {
+        console.error('Error fetching resume data:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-    })
-  }
+    };
 
-  componentDidMount() {
-    this.getResumeData();
-  }
-  render() {
+    fetchResumeData();
+  }, []);
+
+  if (loading) {
     return (
       <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main}/>
-        <Resume data={this.state.resumeData.resume}/>
-        <Portfolio data={this.state.resumeData.portfolio}/>
-        <Contact data={this.state.resumeData.main}/>
-        <Footer data={this.state.resumeData.main}/>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh',
+          fontSize: '18px' 
+        }}>
+          Loading...
+        </div>
       </div>
-    )
+    );
   }
+
+  if (error) {
+    return (
+      <div className="App">
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          height: '100vh',
+          color: 'red',
+          fontSize: '18px' 
+        }}>
+          Error loading data: {error}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="App">
+      <Header data={resumeData.main} />
+      <About data={resumeData.main}/>
+      <Resume data={resumeData.resume}/>
+      <Portfolio data={resumeData.portfolio}/>
+      <Contact data={resumeData.main}/>
+      <Footer data={resumeData.main}/>
+    </div>
+  );
 }
 
 export default App;
